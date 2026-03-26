@@ -2,7 +2,7 @@
   "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
   "connector_name": "Pipedrive",
   "connector_type": "api",
-  "connector_descr": "Sales CRM and pipeline management platform",
+  "connector_descr": "Sales CRM and pipeline management platform for tracking deals, contacts, and sales activities",
   "connector_group_id": "58a3cd60-f9ac-4ea6-803e-611a2b00eb0b",
   "slug": "pipedrive",
   "base_url": "https://${api_domain}.pipedrive.com/api/v1/",

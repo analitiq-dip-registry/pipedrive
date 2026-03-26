@@ -337,7 +337,7 @@
       "type": "string",
       "operators": ["eq"],
       "required": false,
-      "example": "name"
+      "example": "name ASC"
     }
   },
   "pagination": {

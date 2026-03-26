@@ -363,11 +363,11 @@
       "example": "A"
     },
     "sort": {
-      "description": "Field name and sort direction to order results (e.g., 'update_time DESC').",
+      "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, open_deals_count, email.",
       "type": "string",
       "operators": ["eq"],
       "required": false,
-      "example": "update_time"
+      "example": "update_time DESC"
     }
   },
   "pagination": {
