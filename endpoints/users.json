@@ -1,0 +1,124 @@
+{
+  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "endpoint_id": "90087c51-b0dc-4c20-8def-018a25d26c6a_v1",
+  "endpoint": "/users",
+  "method": "GET",
+  "version": 1,
+  "endpoint_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Pipedrive Users",
+    "description": "Returns an array of user objects representing team members within the Pipedrive company account. The response is wrapped in a data envelope: { success: boolean, data: [...] }.",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The user ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "The user name"
+        },
+        "default_currency": {
+          "type": "string",
+          "description": "The user default currency"
+        },
+        "locale": {
+          "type": "string",
+          "description": "The user locale"
+        },
+        "lang": {
+          "type": "integer",
+          "description": "The user language ID"
+        },
+        "email": {
+          "type": "string",
+          "description": "The user email"
+        },
+        "phone": {
+          "type": "string",
+          "nullable": true,
+          "description": "The user phone"
+        },
+        "activated": {
+          "type": "boolean",
+          "description": "Boolean that indicates whether the user is activated"
+        },
+        "last_login": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
+        },
+        "created": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
+        },
+        "modified": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
+        },
+        "has_created_company": {
+          "type": "boolean",
+          "description": "Boolean that indicates whether the user has created a company"
+        },
+        "access": {
+          "type": "array",
+          "description": "The access permissions granted to the user across different apps",
+          "items": {
+            "type": "object",
+            "properties": {
+              "app": {
+                "type": "string",
+                "description": "The application name (e.g., global, sales, campaigns, projects, account_settings, partnership)"
+              },
+              "admin": {
+                "type": "boolean",
+                "description": "Whether the user has admin access for this app"
+              },
+              "permission_set_id": {
+                "type": "string",
+                "description": "The UUID of the permission set assigned for this app"
+              }
+            }
+          }
+        },
+        "active_flag": {
+          "type": "boolean",
+          "description": "Boolean that indicates whether the user is activated"
+        },
+        "timezone_name": {
+          "type": "string",
+          "description": "The user timezone name"
+        },
+        "timezone_offset": {
+          "type": "string",
+          "description": "The user timezone offset"
+        },
+        "role_id": {
+          "type": "integer",
+          "description": "The ID of the user role"
+        },
+        "icon_url": {
+          "type": "string",
+          "nullable": true,
+          "description": "The user icon URL"
+        },
+        "is_you": {
+          "type": "boolean",
+          "description": "Boolean that indicates if the requested user is the same which is logged in"
+        },
+        "is_deleted": {
+          "type": "boolean",
+          "description": "Boolean that indicates whether the user is deleted from the company"
+        }
+      }
+    }
+  },
+  "filters": {},
+  "pagination": null,
+  "replication_filter_mapping": {}
+}

@@ -1,0 +1,392 @@
+{
+  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "endpoint_id": "c4fbc755-6bbb-4a9b-b092-120b909a697e_v1",
+  "endpoint": "/persons",
+  "method": "GET",
+  "version": 1,
+  "endpoint_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Persons List",
+    "description": "Returns an array of person (contact) objects from the Pipedrive CRM. Each person represents a contact with associated email addresses, phone numbers, and organization links.",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the person"
+        },
+        "company_id": {
+          "type": "integer",
+          "description": "ID of the company this person belongs to"
+        },
+        "active_flag": {
+          "type": "boolean",
+          "description": "Whether the person is active (not deleted)"
+        },
+        "first_name": {
+          "type": "string",
+          "description": "First name of the person",
+          "nullable": true
+        },
+        "last_name": {
+          "type": "string",
+          "description": "Last name of the person",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the person"
+        },
+        "email": {
+          "type": "array",
+          "description": "Array of email address objects associated with the person",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Label for the email (e.g., work, home)"
+              },
+              "value": {
+                "type": "string",
+                "format": "email",
+                "description": "The email address"
+              },
+              "primary": {
+                "type": "boolean",
+                "description": "Whether this is the primary email address"
+              }
+            }
+          }
+        },
+        "phone": {
+          "type": "array",
+          "description": "Array of phone number objects associated with the person",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Label for the phone number (e.g., work, mobile, home)"
+              },
+              "value": {
+                "type": "string",
+                "description": "The phone number"
+              },
+              "primary": {
+                "type": "boolean",
+                "description": "Whether this is the primary phone number"
+              }
+            }
+          }
+        },
+        "org_id": {
+          "type": "object",
+          "description": "Organization linked to the person (expanded object with org details)",
+          "nullable": true,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the organization"
+            },
+            "people_count": {
+              "type": "integer",
+              "description": "Number of people in the organization"
+            },
+            "owner_id": {
+              "type": "integer",
+              "description": "ID of the organization owner"
+            },
+            "address": {
+              "type": "string",
+              "description": "Address of the organization",
+              "nullable": true
+            },
+            "active_flag": {
+              "type": "boolean",
+              "description": "Whether the organization is active"
+            },
+            "cc_email": {
+              "type": "string",
+              "description": "BCC email of the organization"
+            },
+            "value": {
+              "type": "integer",
+              "description": "ID of the organization"
+            }
+          }
+        },
+        "owner_id": {
+          "type": "object",
+          "description": "User who owns the person record (expanded object)",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "ID of the owner user"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the owner user"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Email of the owner user"
+            },
+            "has_pic": {
+              "type": "integer",
+              "description": "Whether the owner has a profile picture (0 or 1)"
+            },
+            "pic_hash": {
+              "type": "string",
+              "description": "Hash of the owner profile picture",
+              "nullable": true
+            },
+            "active_flag": {
+              "type": "boolean",
+              "description": "Whether the owner user is active"
+            },
+            "value": {
+              "type": "integer",
+              "description": "ID of the owner user"
+            }
+          }
+        },
+        "open_deals_count": {
+          "type": "integer",
+          "description": "Number of open deals associated with the person"
+        },
+        "related_open_deals_count": {
+          "type": "integer",
+          "description": "Number of open deals related through organization"
+        },
+        "closed_deals_count": {
+          "type": "integer",
+          "description": "Number of closed deals associated with the person"
+        },
+        "related_closed_deals_count": {
+          "type": "integer",
+          "description": "Number of closed deals related through organization"
+        },
+        "participant_open_deals_count": {
+          "type": "integer",
+          "description": "Number of open deals where the person is a participant"
+        },
+        "participant_closed_deals_count": {
+          "type": "integer",
+          "description": "Number of closed deals where the person is a participant"
+        },
+        "email_messages_count": {
+          "type": "integer",
+          "description": "Number of email messages linked to the person"
+        },
+        "activities_count": {
+          "type": "integer",
+          "description": "Number of activities linked to the person"
+        },
+        "done_activities_count": {
+          "type": "integer",
+          "description": "Number of completed activities"
+        },
+        "undone_activities_count": {
+          "type": "integer",
+          "description": "Number of incomplete activities"
+        },
+        "files_count": {
+          "type": "integer",
+          "description": "Number of files linked to the person"
+        },
+        "notes_count": {
+          "type": "integer",
+          "description": "Number of notes linked to the person"
+        },
+        "followers_count": {
+          "type": "integer",
+          "description": "Number of followers of the person"
+        },
+        "won_deals_count": {
+          "type": "integer",
+          "description": "Number of won deals associated with the person"
+        },
+        "related_won_deals_count": {
+          "type": "integer",
+          "description": "Number of won deals related through organization"
+        },
+        "lost_deals_count": {
+          "type": "integer",
+          "description": "Number of lost deals associated with the person"
+        },
+        "related_lost_deals_count": {
+          "type": "integer",
+          "description": "Number of lost deals related through organization"
+        },
+        "last_incoming_mail_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Timestamp of the last incoming email",
+          "nullable": true
+        },
+        "last_outgoing_mail_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Timestamp of the last outgoing email",
+          "nullable": true
+        },
+        "label": {
+          "type": "integer",
+          "description": "ID of the label assigned to the person",
+          "nullable": true
+        },
+        "picture_id": {
+          "type": "object",
+          "description": "Profile picture information",
+          "nullable": true,
+          "properties": {
+            "item_type": {
+              "type": "string",
+              "description": "Type of the item (person)"
+            },
+            "item_id": {
+              "type": "integer",
+              "description": "ID of the person"
+            },
+            "active_flag": {
+              "type": "boolean",
+              "description": "Whether the picture is active"
+            },
+            "value": {
+              "type": "integer",
+              "description": "ID of the picture"
+            },
+            "add_time": {
+              "type": "string",
+              "format": "datetime",
+              "description": "Time when the picture was added"
+            },
+            "update_time": {
+              "type": "string",
+              "format": "datetime",
+              "description": "Time when the picture was last updated"
+            },
+            "pictures": {
+              "type": "object",
+              "description": "URLs of the picture in various sizes"
+            }
+          }
+        },
+        "next_activity_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the next scheduled activity",
+          "nullable": true
+        },
+        "next_activity_time": {
+          "type": "string",
+          "format": "time",
+          "description": "Time of the next scheduled activity",
+          "nullable": true
+        },
+        "next_activity_id": {
+          "type": "integer",
+          "description": "ID of the next scheduled activity",
+          "nullable": true
+        },
+        "last_activity_id": {
+          "type": "integer",
+          "description": "ID of the last completed activity",
+          "nullable": true
+        },
+        "last_activity_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the last completed activity",
+          "nullable": true
+        },
+        "visible_to": {
+          "type": "string",
+          "description": "Visibility setting of the person (1=owner only, 3=entire company, 5=owner and followers, 7=entire company)"
+        },
+        "add_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Timestamp when the person was created"
+        },
+        "update_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Timestamp when the person was last updated"
+        },
+        "delete_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Timestamp when the person was deleted",
+          "nullable": true
+        },
+        "cc_email": {
+          "type": "string",
+          "format": "email",
+          "description": "BCC email address for the person"
+        },
+        "org_name": {
+          "type": "string",
+          "description": "Name of the organization linked to the person",
+          "nullable": true
+        },
+        "owner_name": {
+          "type": "string",
+          "description": "Name of the user who owns the person record"
+        }
+      }
+    }
+  },
+  "filters": {
+    "user_id": {
+      "description": "Filter persons by the owner user ID. When supplied, only persons owned by the given user are returned.",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 1
+    },
+    "filter_id": {
+      "description": "Filter persons using a predefined Pipedrive filter by its ID.",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 12
+    },
+    "first_char": {
+      "description": "Filter persons whose name starts with the specified letter or character.",
+      "type": "string",
+      "operators": ["eq"],
+      "required": false,
+      "example": "A"
+    },
+    "sort": {
+      "description": "Field name to sort results by (e.g., name, add_time, update_time).",
+      "type": "string",
+      "operators": ["eq"],
+      "required": false,
+      "example": "update_time"
+    }
+  },
+  "pagination": {
+    "type": "offset",
+    "params": {
+      "limit_param": "limit",
+      "offset_param": "start",
+      "max_limit": 500,
+      "cursor_param": null,
+      "next_cursor_field": null,
+      "page_param": null,
+      "uses_link_header": false,
+      "time_window_params": {
+        "start_param": null,
+        "end_param": null
+      }
+    }
+  },
+  "replication_filter_mapping": {
+    "update_time": "sort"
+  }
+}
