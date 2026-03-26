@@ -5,7 +5,7 @@
   "connector_descr": "Sales CRM and pipeline management platform",
   "connector_group_id": "58a3cd60-f9ac-4ea6-803e-611a2b00eb0b",
   "slug": "pipedrive",
-  "base_url": "https://${api_domain}/api/v1/",
+  "base_url": "https://${api_domain}.pipedrive.com/api/v1/",
   "client_required": true,
   "auth": {
     "type": "oauth2_authorization_code",

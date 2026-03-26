@@ -23,7 +23,7 @@ Pipedrive is a sales-focused CRM platform that provides data on deals, persons (
 
 ## Post-Auth Steps
 
-The OAuth2 token response includes an `api_domain` field that contains the company-specific API domain (e.g., `yourcompany.pipedrive.com`). This is automatically resolved and applied as the base URL for all subsequent API requests.
+After OAuth2 authentication, the connector calls `GET /users/me` to retrieve the `company_domain` field (e.g., `yourcompany`), which is used to construct the company-specific API base URL (`https://{company_domain}.pipedrive.com/api/v1/`).
 
 ## Available Endpoints
 
@@ -34,7 +34,7 @@ The OAuth2 token response includes an `api_domain` field that contains the compa
 | /organizations | GET | List and filter organizations (companies) | Defined |
 | /users   | GET    | List users (team members) in the Pipedrive account | Defined |
 | /pipelines | GET  | List sales pipelines | Defined |
-| /v2/stages | GET  | List stages within pipelines (cursor-paginated, v2 API) | Defined |
+| /stages    | GET  | List stages within pipelines | Defined |
 
 ## Rate Limits
 
@@ -43,8 +43,8 @@ The OAuth2 token response includes an `api_domain` field that contains the compa
 
 ## Caveats
 
-- The base URL is company-specific and dynamically resolved from the OAuth token response `api_domain` field. It follows the pattern `https://{company_domain}.pipedrive.com/api/v1/`.
+- The base URL is company-specific, resolved via `GET /users/me` after OAuth. It follows the pattern `https://{company_domain}.pipedrive.com/api/v1/`.
 - Pipedrive uses a token-based rate limiting system where different endpoints consume different numbers of tokens. The burst limit is approximately 80 requests per 2-second window, but complex endpoints cost more tokens.
 - Refresh tokens expire after 60 days of non-use. Long-idle connections will need to re-authenticate.
-- Pagination uses `start` and `limit` query parameters with a default limit of 100 and a maximum of 500 items per request.
-- The API returns a `additional_data.pagination` object indicating whether more items are available.
+- All endpoints use offset-based pagination with `start` and `limit` query parameters (default 100, max 500). The `additional_data.pagination` response object indicates whether more items are available.
+- The `/users` endpoint returns all users in a single response and does not support pagination.

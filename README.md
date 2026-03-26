@@ -52,7 +52,7 @@ Pipedrive supports two authentication methods. This connector uses **OAuth2 Auth
 
 ## Available Endpoints
 
-The table below lists all data endpoints defined by this connector. Each endpoint represents a resource you can read from or write to.
+The table below lists all data endpoints defined by this connector. Each endpoint represents a resource you can read from.
 
 | Endpoint | Method | Description | Status |
 |----------|--------|-------------|--------|
@@ -61,13 +61,13 @@ The table below lists all data endpoints defined by this connector. Each endpoin
 | /organizations | GET | List and filter organizations (companies) | Defined |
 | /users   | GET    | List users (team members) in the Pipedrive account | Defined |
 | /pipelines | GET  | List sales pipelines | Defined |
-| /v2/stages | GET  | List stages within pipelines (cursor-paginated, v2 API) | Defined |
+| /stages    | GET  | List stages within pipelines | Defined |
 
 ## Limitations
 
 - **Rate limits** -- Pipedrive uses a token-based rate limiting system with a burst limit of approximately 80 requests per 2-second window. Daily budgets vary by subscription plan and seat count.
 - **Token expiry** -- OAuth2 access tokens expire after 1 hour. Refresh tokens expire after 60 days of non-use, requiring re-authentication for idle connections.
-- **Company-specific URLs** -- Each Pipedrive account has a unique API domain (e.g., `yourcompany.pipedrive.com`). The connector resolves this automatically from the OAuth token response.
+- **Company-specific URLs** -- Each Pipedrive account has a unique API domain (e.g., `yourcompany.pipedrive.com`). The connector resolves this automatically after authentication via a call to `/users/me`.
 - **Pagination** -- The API returns a maximum of 500 items per request. Large datasets require multiple paginated requests.
 
 ## For AI agents

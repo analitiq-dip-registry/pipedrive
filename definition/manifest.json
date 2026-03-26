@@ -34,14 +34,14 @@
     },
     {
       "endpoint_id": "742179c6-ab2c-4e48-a0e4-5c7c408c7302_v1",
-      "endpoint": "/v1/organizations",
+      "endpoint": "/organizations",
       "method": "GET",
       "version": 1,
       "file": "endpoints/organizations.json"
     },
     {
       "endpoint_id": "27e3d82e-353c-437d-9e3a-95ecfb94f438_v1",
-      "endpoint": "/v2/stages",
+      "endpoint": "/stages",
       "method": "GET",
       "version": 1,
       "file": "endpoints/stages.json"
