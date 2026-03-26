@@ -13,7 +13,7 @@ Pipedrive is a sales-focused CRM platform that provides data on deals, persons (
 
 ### OAuth2 Authorization Code
 - Client app required: yes (register at Pipedrive Marketplace)
-- Scopes: deals:read, contacts:read, users:read
+- Scopes: deals:read, contacts:read, users:read (configured during app registration, not passed in the authorize URL)
 - Token expiry: 3600 seconds (1 hour)
 - Refresh token expiry: 60 days of non-use
 
