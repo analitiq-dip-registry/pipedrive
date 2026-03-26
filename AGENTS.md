@@ -47,4 +47,4 @@ After OAuth2 authentication, the connector calls `GET /v1/users/me` to retrieve 
 - Pipedrive uses a token-based rate limiting system where different endpoints consume different numbers of tokens. The burst limit is approximately 80 requests per 2-second window, but complex endpoints cost more tokens.
 - Refresh tokens expire after 60 days of non-use. Long-idle connections will need to re-authenticate.
 - All endpoints use offset-based pagination with `start` and `limit` query parameters (default 100, max 500). The `additional_data.pagination` response object indicates whether more items are available.
-- The `/users` endpoint returns all users in a single response and does not support pagination.
+- The `/users`, `/pipelines`, and `/stages` endpoints return all records in a single response and do not support pagination.

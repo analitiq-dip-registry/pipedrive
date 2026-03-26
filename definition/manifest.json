@@ -2,7 +2,7 @@
   "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
   "connector_name": "Pipedrive",
   "slug": "pipedrive",
-  "version": "1.6.0",
+  "version": "1.0.0",
   "endpoints": [
     {
       "endpoint_id": "973b920e-6af5-4d6b-a64c-fd86fec7dedf_v1",
