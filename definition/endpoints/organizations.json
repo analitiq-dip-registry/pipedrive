@@ -333,7 +333,7 @@
       "example": "A"
     },
     "sort": {
-      "description": "Field name to sort by. Supported fields: id, name, add_time, update_time, address, owner_name, etc.",
+      "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name.",
       "type": "string",
       "operators": ["eq"],
       "required": false,
