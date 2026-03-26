@@ -1,0 +1,50 @@
+{
+  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "connector_name": "Pipedrive",
+  "slug": "pipedrive",
+  "version": "1.6.0",
+  "endpoints": [
+    {
+      "endpoint_id": "973b920e-6af5-4d6b-a64c-fd86fec7dedf_v1",
+      "endpoint": "/pipelines",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/pipelines.json"
+    },
+    {
+      "endpoint_id": "c4fbc755-6bbb-4a9b-b092-120b909a697e_v1",
+      "endpoint": "/persons",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/persons.json"
+    },
+    {
+      "endpoint_id": "90087c51-b0dc-4c20-8def-018a25d26c6a_v1",
+      "endpoint": "/users",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/users.json"
+    },
+    {
+      "endpoint_id": "32b34c7b-b0b3-407a-8359-78da55ff2ebe_v1",
+      "endpoint": "/deals",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/deals.json"
+    },
+    {
+      "endpoint_id": "742179c6-ab2c-4e48-a0e4-5c7c408c7302_v1",
+      "endpoint": "/v1/organizations",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/organizations.json"
+    },
+    {
+      "endpoint_id": "27e3d82e-353c-437d-9e3a-95ecfb94f438_v1",
+      "endpoint": "/v2/stages",
+      "method": "GET",
+      "version": 1,
+      "file": "endpoints/stages.json"
+    }
+  ]
+}

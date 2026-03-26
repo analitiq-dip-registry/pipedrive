@@ -1,0 +1,75 @@
+{
+  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "endpoint_id": "973b920e-6af5-4d6b-a64c-fd86fec7dedf_v1",
+  "endpoint": "/pipelines",
+  "method": "GET",
+  "version": 1,
+  "endpoint_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Pipelines",
+    "description": "Returns an array of sales pipeline objects from the Pipedrive account",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The unique identifier of the pipeline"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the pipeline"
+        },
+        "url_title": {
+          "type": "string",
+          "description": "The URL-friendly title of the pipeline used in the Pipedrive web app URL"
+        },
+        "order_nr": {
+          "type": "integer",
+          "description": "The order number of the pipeline in the pipeline list. Defines the display order in the UI"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the pipeline is active (true) or inactive/archived (false)"
+        },
+        "deal_probability": {
+          "type": "boolean",
+          "description": "Whether deal probability is enabled for this pipeline. When enabled, each stage can have a probability percentage"
+        },
+        "add_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The creation date and time of the pipeline in UTC (e.g., 2023-01-15 10:30:00)"
+        },
+        "update_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The last update date and time of the pipeline in UTC (e.g., 2023-06-20 14:45:00)",
+          "nullable": true
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "Whether this pipeline is currently selected as the default pipeline for the authenticated user"
+        }
+      }
+    }
+  },
+  "filters": {},
+  "pagination": {
+    "type": "offset",
+    "params": {
+      "limit_param": "limit",
+      "offset_param": "start",
+      "max_limit": 500,
+      "cursor_param": null,
+      "next_cursor_field": null,
+      "page_param": null,
+      "uses_link_header": false,
+      "time_window_params": {
+        "start_param": null,
+        "end_param": null
+      }
+    }
+  },
+  "replication_filter_mapping": {}
+}

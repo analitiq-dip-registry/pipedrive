@@ -1,0 +1,383 @@
+{
+  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "endpoint_id": "32b34c7b-b0b3-407a-8359-78da55ff2ebe_v1",
+  "endpoint": "/deals",
+  "method": "GET",
+  "version": 1,
+  "endpoint_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Pipedrive Deals",
+    "description": "Returns an array of deal objects from the Pipedrive sales pipeline",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The unique ID of the deal"
+        },
+        "creator_user_id": {
+          "type": "object",
+          "description": "The creator of the deal",
+          "properties": {
+            "id": { "type": "integer", "description": "User ID of the creator" },
+            "name": { "type": "string", "description": "Name of the creator" },
+            "email": { "type": "string", "description": "Email of the creator" },
+            "has_pic": { "type": "integer", "description": "Whether the creator has a profile picture (0/1)" },
+            "pic_hash": { "type": "string", "nullable": true, "description": "Hash of the profile picture" },
+            "active_flag": { "type": "boolean", "description": "Whether the creator user is active" },
+            "value": { "type": "integer", "description": "User ID value" }
+          }
+        },
+        "user_id": {
+          "type": "object",
+          "description": "The user who owns the deal",
+          "properties": {
+            "id": { "type": "integer", "description": "User ID of the owner" },
+            "name": { "type": "string", "description": "Name of the owner" },
+            "email": { "type": "string", "description": "Email of the owner" },
+            "has_pic": { "type": "integer", "description": "Whether the owner has a profile picture (0/1)" },
+            "pic_hash": { "type": "string", "nullable": true, "description": "Hash of the profile picture" },
+            "active_flag": { "type": "boolean", "description": "Whether the owner user is active" },
+            "value": { "type": "integer", "description": "User ID value" }
+          }
+        },
+        "person_id": {
+          "type": "object",
+          "nullable": true,
+          "description": "The person (contact) associated with the deal",
+          "properties": {
+            "active_flag": { "type": "boolean", "description": "Whether the person is active" },
+            "name": { "type": "string", "description": "Name of the person" },
+            "email": { "type": "array", "description": "Email addresses of the person", "items": { "type": "object" } },
+            "phone": { "type": "array", "description": "Phone numbers of the person", "items": { "type": "object" } },
+            "owner_id": { "type": "integer", "description": "Owner user ID of the person" },
+            "value": { "type": "integer", "description": "Person ID value" }
+          }
+        },
+        "org_id": {
+          "type": "object",
+          "nullable": true,
+          "description": "The organization associated with the deal",
+          "properties": {
+            "name": { "type": "string", "description": "Name of the organization" },
+            "people_count": { "type": "integer", "description": "Number of people in the organization" },
+            "owner_id": { "type": "integer", "description": "Owner user ID of the organization" },
+            "address": { "type": "string", "nullable": true, "description": "Address of the organization" },
+            "active_flag": { "type": "boolean", "description": "Whether the organization is active" },
+            "cc_email": { "type": "string", "description": "CC email for the organization" },
+            "value": { "type": "integer", "description": "Organization ID value" }
+          }
+        },
+        "stage_id": {
+          "type": "integer",
+          "description": "The ID of the stage the deal is in"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the deal"
+        },
+        "value": {
+          "type": "number",
+          "description": "The monetary value of the deal"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency code of the deal value (e.g., USD, EUR)"
+        },
+        "add_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The creation date and time of the deal (format: YYYY-MM-DD HH:MM:SS)"
+        },
+        "update_time": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The last update date and time of the deal (format: YYYY-MM-DD HH:MM:SS)"
+        },
+        "stage_change_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The last time the deal stage was changed (format: YYYY-MM-DD HH:MM:SS)"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the deal is active"
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Whether the deal is deleted"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the deal (open, won, lost, deleted)"
+        },
+        "probability": {
+          "type": "number",
+          "nullable": true,
+          "description": "The success probability percentage of the deal"
+        },
+        "next_activity_date": {
+          "type": "string",
+          "format": "date",
+          "nullable": true,
+          "description": "The date of the next activity associated with the deal"
+        },
+        "next_activity_time": {
+          "type": "string",
+          "format": "time",
+          "nullable": true,
+          "description": "The time of the next activity associated with the deal"
+        },
+        "next_activity_id": {
+          "type": "integer",
+          "nullable": true,
+          "description": "The ID of the next activity associated with the deal"
+        },
+        "last_activity_id": {
+          "type": "integer",
+          "nullable": true,
+          "description": "The ID of the last activity associated with the deal"
+        },
+        "last_activity_date": {
+          "type": "string",
+          "format": "date",
+          "nullable": true,
+          "description": "The date of the last activity associated with the deal"
+        },
+        "lost_reason": {
+          "type": "string",
+          "nullable": true,
+          "description": "The reason the deal was lost"
+        },
+        "visible_to": {
+          "type": "string",
+          "description": "The visibility setting of the deal (1=owner only, 3=owner's visibility group, 5=owner's visibility group and sub-groups, 7=entire company)"
+        },
+        "close_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time the deal was closed (won or lost)"
+        },
+        "pipeline_id": {
+          "type": "integer",
+          "description": "The ID of the pipeline the deal is in"
+        },
+        "won_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time the deal was marked as won"
+        },
+        "first_won_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time the deal was first marked as won"
+        },
+        "lost_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time the deal was marked as lost"
+        },
+        "products_count": {
+          "type": "integer",
+          "description": "The number of products attached to the deal"
+        },
+        "files_count": {
+          "type": "integer",
+          "description": "The number of files attached to the deal"
+        },
+        "notes_count": {
+          "type": "integer",
+          "description": "The number of notes attached to the deal"
+        },
+        "followers_count": {
+          "type": "integer",
+          "description": "The number of followers of the deal"
+        },
+        "email_messages_count": {
+          "type": "integer",
+          "description": "The number of email messages associated with the deal"
+        },
+        "activities_count": {
+          "type": "integer",
+          "description": "The number of activities associated with the deal"
+        },
+        "done_activities_count": {
+          "type": "integer",
+          "description": "The number of completed activities associated with the deal"
+        },
+        "undone_activities_count": {
+          "type": "integer",
+          "description": "The number of incomplete activities associated with the deal"
+        },
+        "participants_count": {
+          "type": "integer",
+          "description": "The number of participants in the deal"
+        },
+        "expected_close_date": {
+          "type": "string",
+          "format": "date",
+          "nullable": true,
+          "description": "The expected close date of the deal"
+        },
+        "last_incoming_mail_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time of the last incoming email"
+        },
+        "last_outgoing_mail_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time of the last outgoing email"
+        },
+        "label": {
+          "type": "string",
+          "nullable": true,
+          "description": "The label assigned to the deal"
+        },
+        "stage_order_nr": {
+          "type": "integer",
+          "description": "The order number of the stage within its pipeline"
+        },
+        "person_name": {
+          "type": "string",
+          "nullable": true,
+          "description": "The name of the person associated with the deal"
+        },
+        "org_name": {
+          "type": "string",
+          "nullable": true,
+          "description": "The name of the organization associated with the deal"
+        },
+        "next_activity_subject": {
+          "type": "string",
+          "nullable": true,
+          "description": "The subject of the next activity"
+        },
+        "next_activity_type": {
+          "type": "string",
+          "nullable": true,
+          "description": "The type of the next activity"
+        },
+        "next_activity_duration": {
+          "type": "string",
+          "nullable": true,
+          "description": "The duration of the next activity (HH:MM:SS)"
+        },
+        "next_activity_note": {
+          "type": "string",
+          "nullable": true,
+          "description": "The note of the next activity"
+        },
+        "formatted_value": {
+          "type": "string",
+          "description": "The deal value formatted with currency symbol"
+        },
+        "weighted_value": {
+          "type": "number",
+          "description": "The weighted value of the deal (value * probability)"
+        },
+        "formatted_weighted_value": {
+          "type": "string",
+          "description": "The weighted value formatted with currency symbol"
+        },
+        "weighted_value_currency": {
+          "type": "string",
+          "description": "The currency code of the weighted value"
+        },
+        "rotten_time": {
+          "type": "string",
+          "format": "datetime",
+          "nullable": true,
+          "description": "The date and time when the deal became rotten (stale)"
+        },
+        "owner_name": {
+          "type": "string",
+          "description": "The name of the deal owner"
+        },
+        "cc_email": {
+          "type": "string",
+          "description": "The BCC email associated with the deal for email tracking"
+        },
+        "org_hidden": {
+          "type": "boolean",
+          "description": "Whether the organization is hidden"
+        },
+        "person_hidden": {
+          "type": "boolean",
+          "description": "Whether the person is hidden"
+        }
+      }
+    }
+  },
+  "filters": {
+    "user_id": {
+      "description": "Filter deals by the owner user ID. If omitted, all deals for the account are returned.",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 1
+    },
+    "filter_id": {
+      "description": "Filter deals using a predefined Pipedrive filter ID",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 12
+    },
+    "stage_id": {
+      "description": "Filter deals by pipeline stage ID. If omitted, all stages are returned.",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 5
+    },
+    "status": {
+      "description": "Filter deals by status. One of: open, won, lost, deleted, all_not_deleted. Default is all_not_deleted.",
+      "type": "string",
+      "operators": ["eq"],
+      "required": false,
+      "example": "open"
+    },
+    "sort": {
+      "description": "Field name and sort direction to order results (e.g., 'update_time DESC')",
+      "type": "string",
+      "operators": ["eq"],
+      "required": false,
+      "example": "update_time DESC"
+    },
+    "owned_by_you": {
+      "description": "When set to 1, only deals owned by the authenticated user are returned. 0 returns all deals.",
+      "type": "integer",
+      "operators": ["eq"],
+      "required": false,
+      "example": 1
+    }
+  },
+  "pagination": {
+    "type": "offset",
+    "params": {
+      "limit_param": "limit",
+      "offset_param": "start",
+      "max_limit": 500,
+      "cursor_param": null,
+      "next_cursor_field": null,
+      "page_param": null,
+      "uses_link_header": false,
+      "time_window_params": {
+        "start_param": null,
+        "end_param": null
+      }
+    }
+  },
+  "replication_filter_mapping": {
+    "update_time": "sort"
+  }
+}
