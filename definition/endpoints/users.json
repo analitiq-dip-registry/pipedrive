@@ -7,7 +7,7 @@
   "endpoint_schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Pipedrive Users",
-    "description": "Returns an array of user objects representing team members within the Pipedrive company account. The response is wrapped in a data envelope: { success: boolean, data: [...] }.",
+    "description": "Returns an array of user objects representing team members within the Pipedrive company account.",
     "type": "array",
     "items": {
       "type": "object",
@@ -43,7 +43,7 @@
         },
         "activated": {
           "type": "boolean",
-          "description": "Boolean that indicates whether the user is activated"
+          "description": "Whether the user has completed account activation (email confirmation)"
         },
         "last_login": {
           "type": "string",
@@ -88,7 +88,7 @@
         },
         "active_flag": {
           "type": "boolean",
-          "description": "Boolean that indicates whether the user is activated"
+          "description": "Whether the user account is currently active (not deactivated by an admin)"
         },
         "timezone_name": {
           "type": "string",

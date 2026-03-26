@@ -41,11 +41,10 @@
 
 ### Added
 - Endpoint definition for `/pipelines` (GET) -- list sales pipelines with full response schema including id, name, url_title, order_nr, active, deal_probability, add_time, update_time, and selected fields
-- Pagination configuration using offset-based pagination with `start` and `limit` parameters (max 500)
+- No pagination required -- the endpoint returns all pipelines in a single response
 
 ## [1.0.0] - 2026-03-26
 
 ### Added
 - Initial connector definition with OAuth2 Authorization Code authentication
-- Post-auth step for automatic API domain resolution via GET /users/me
-- Endpoints: deals, persons, organizations, users, pipelines, stages
+- Post-auth step for automatic API domain resolution via GET /v1/users/me

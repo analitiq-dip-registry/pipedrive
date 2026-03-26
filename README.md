@@ -4,7 +4,7 @@ Connector for the Pipedrive CRM API. Enables reading deals, contacts, organizati
 
 ## What is this?
 
-This is a **connector** -- a configuration that defines how to authenticate with Pipedrive and what data endpoints are available for reading and writing. It does not move data by itself. Instead, it is used by the [Analitiq](https://analitiq-app.com) data integration platform or the open-source `analitiq-core` engine to set up data pipelines.
+This is a **connector** -- a configuration that defines how to authenticate with Pipedrive and what data endpoints are available for reading. It does not move data by itself. Instead, it is used by the [Analitiq](https://analitiq-app.com) data integration platform or the open-source `analitiq-core` engine to set up data pipelines.
 
 ## How to use this connector
 
@@ -67,7 +67,7 @@ The table below lists all data endpoints defined by this connector. Each endpoin
 
 - **Rate limits** -- Pipedrive uses a token-based rate limiting system with a burst limit of approximately 80 requests per 2-second window. Daily budgets vary by subscription plan and seat count.
 - **Token expiry** -- OAuth2 access tokens expire after 1 hour. Refresh tokens expire after 60 days of non-use, requiring re-authentication for idle connections.
-- **Company-specific URLs** -- Each Pipedrive account has a unique API domain (e.g., `yourcompany.pipedrive.com`). The connector resolves this automatically after authentication via a call to `/users/me`.
+- **Company-specific URLs** -- Each Pipedrive account has a unique API domain (e.g., `yourcompany.pipedrive.com`). The connector resolves this automatically after authentication via a call to `/v1/users/me`.
 - **Pagination** -- The API returns a maximum of 500 items per request. Large datasets require multiple paginated requests.
 
 ## For AI agents

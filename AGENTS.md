@@ -23,7 +23,7 @@ Pipedrive is a sales-focused CRM platform that provides data on deals, persons (
 
 ## Post-Auth Steps
 
-After OAuth2 authentication, the connector calls `GET /users/me` to retrieve the `company_domain` field (e.g., `yourcompany`), which is used to construct the company-specific API base URL (`https://{company_domain}.pipedrive.com/api/v1/`).
+After OAuth2 authentication, the connector calls `GET /v1/users/me` to retrieve the `company_domain` field (e.g., `yourcompany`), which is stored as the `api_domain` variable and used to construct the company-specific API base URL (`https://${api_domain}.pipedrive.com/api/v1/`).
 
 ## Available Endpoints
 

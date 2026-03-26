@@ -55,7 +55,7 @@
       "apply_to": "base_url",
       "options_source": {
         "method": "GET",
-        "url": "https://api.pipedrive.com/users/me",
+        "url": "https://api.pipedrive.com/v1/users/me",
         "headers": {
           "Authorization": "Bearer ${access_token}"
         },

@@ -55,21 +55,6 @@
     }
   },
   "filters": {},
-  "pagination": {
-    "type": "offset",
-    "params": {
-      "limit_param": "limit",
-      "offset_param": "start",
-      "max_limit": 500,
-      "cursor_param": null,
-      "next_cursor_field": null,
-      "page_param": null,
-      "uses_link_header": false,
-      "time_window_params": {
-        "start_param": null,
-        "end_param": null
-      }
-    }
-  },
+  "pagination": null,
   "replication_filter_mapping": {}
 }
