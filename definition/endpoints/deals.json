@@ -347,7 +347,7 @@
       "example": "open"
     },
     "sort": {
-      "description": "Field name and sort direction to order results (e.g., 'update_time DESC')",
+      "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, title, value, add_time, update_time, stage_id, status.",
       "type": "string",
       "operators": ["eq"],
       "required": false,
