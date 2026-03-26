@@ -109,7 +109,7 @@
             },
             "cc_email": {
               "type": "string",
-              "description": "BCC email of the organization"
+              "description": "The CC email address assigned by Pipedrive for linking email conversations to this organization"
             },
             "value": {
               "type": "integer",
