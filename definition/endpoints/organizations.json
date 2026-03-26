@@ -1,7 +1,7 @@
 {
   "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
   "endpoint_id": "742179c6-ab2c-4e48-a0e4-5c7c408c7302_v1",
-  "endpoint": "/v1/organizations",
+  "endpoint": "/organizations",
   "method": "GET",
   "version": 1,
   "endpoint_schema": {
@@ -182,23 +182,23 @@
         },
         "update_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The date and time when the organization was last updated (format: YYYY-MM-DD HH:MM:SS)"
         },
         "delete_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time when the organization was deleted (format: YYYY-MM-DD HH:MM:SS)"
         },
         "add_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The date and time when the organization was added (format: YYYY-MM-DD HH:MM:SS)"
         },
         "visible_to": {
           "type": "string",
-          "description": "The visibility setting of the organization (1=owner only, 3=entire company, 5=owner and followers, 7=entire company)"
+          "description": "The visibility setting of the organization (1=owner only, 3=owner's visibility group, 5=owner's visibility group and sub-groups, 7=entire company)"
         },
         "next_activity_date": {
           "type": "string",
@@ -341,13 +341,13 @@
     }
   },
   "pagination": {
-    "type": "cursor",
+    "type": "offset",
     "params": {
       "limit_param": "limit",
-      "offset_param": null,
+      "offset_param": "start",
       "max_limit": 500,
-      "cursor_param": "start",
-      "next_cursor_field": "additional_data.pagination.next_start",
+      "cursor_param": null,
+      "next_cursor_field": null,
       "page_param": null,
       "uses_link_header": false,
       "time_window_params": {
@@ -357,6 +357,6 @@
     }
   },
   "replication_filter_mapping": {
-    "update_time": "since"
+    "update_time": "sort"
   }
 }

@@ -3,16 +3,16 @@
 ## [1.6.0] - 2026-03-26
 
 ### Added
-- Endpoint definition for `/v2/stages` (GET) -- list pipeline stages with full response schema including id, order_nr, name, is_deleted, deal_probability, pipeline_id, is_deal_rot_enabled, days_to_rotten, add_time, update_time
-- Cursor-based pagination using Pipedrive v2 API with `cursor` and `limit` parameters (max 500)
-- Filter support for `pipeline_id`, `sort_by`, and `sort_direction`
+- Endpoint definition for `/stages` (GET) -- list pipeline stages with full response schema including id, order_nr, name, is_deleted, deal_probability, pipeline_id, is_deal_rot_enabled, days_to_rotten, add_time, update_time
+- Offset-based pagination with `start` and `limit` parameters (max 500)
+- Filter support for `pipeline_id`
 
 ## [1.5.0] - 2026-03-26
 
 ### Added
-- Endpoint definition for `/v1/organizations` (GET) -- list and filter organizations (companies) with full response schema including id, name, owner_id (expanded object), company_id, open/closed/won/lost deal counts, people_count, activities_count, email_messages_count, files_count, notes_count, followers_count, address fields (address, street_number, route, locality, admin_area_level_1/2, country, postal_code, formatted_address), add_time, update_time, visible_to, active_flag, category_id, label, label_ids, cc_email, and related activity/picture fields
+- Endpoint definition for `/organizations` (GET) -- list and filter organizations (companies) with full response schema including id, name, owner_id (expanded object), company_id, open/closed/won/lost deal counts, people_count, activities_count, email_messages_count, files_count, notes_count, followers_count, address fields (address, street_number, route, locality, admin_area_level_1/2, country, postal_code, formatted_address), add_time, update_time, visible_to, active_flag, category_id, label, label_ids, cc_email, and related activity/picture fields
 - Filters: user_id, filter_id, first_char, sort
-- Cursor-based pagination using `start` and `limit` parameters (max 500) with `additional_data.pagination.next_start`
+- Offset-based pagination using `start` and `limit` parameters (max 500)
 - Replication filter mapping on update_time
 
 ## [1.4.0] - 2026-03-26
@@ -47,5 +47,5 @@
 
 ### Added
 - Initial connector definition with OAuth2 Authorization Code authentication
-- Post-auth step for automatic API domain resolution from token response
-- Endpoints: deals, persons, organizations, users, pipelines, stages (definitions pending)
+- Post-auth step for automatic API domain resolution via GET /users/me
+- Endpoints: deals, persons, organizations, users, pipelines, stages

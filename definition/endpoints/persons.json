@@ -223,13 +223,13 @@
         },
         "last_incoming_mail_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "Timestamp of the last incoming email",
           "nullable": true
         },
         "last_outgoing_mail_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "Timestamp of the last outgoing email",
           "nullable": true
         },
@@ -261,12 +261,12 @@
             },
             "add_time": {
               "type": "string",
-              "format": "datetime",
+              "format": "date-time",
               "description": "Time when the picture was added"
             },
             "update_time": {
               "type": "string",
-              "format": "datetime",
+              "format": "date-time",
               "description": "Time when the picture was last updated"
             },
             "pictures": {
@@ -305,21 +305,21 @@
         },
         "visible_to": {
           "type": "string",
-          "description": "Visibility setting of the person (1=owner only, 3=entire company, 5=owner and followers, 7=entire company)"
+          "description": "Visibility setting of the person (1=owner only, 3=owner's visibility group, 5=owner's visibility group and sub-groups, 7=entire company)"
         },
         "add_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "Timestamp when the person was created"
         },
         "update_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "Timestamp when the person was last updated"
         },
         "delete_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "Timestamp when the person was deleted",
           "nullable": true
         },

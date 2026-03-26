@@ -47,17 +47,17 @@
         },
         "last_login": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
         },
         "created": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
         },
         "modified": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS"
         },

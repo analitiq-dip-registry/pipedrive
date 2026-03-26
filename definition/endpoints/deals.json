@@ -87,17 +87,17 @@
         },
         "add_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The creation date and time of the deal (format: YYYY-MM-DD HH:MM:SS)"
         },
         "update_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The last update date and time of the deal (format: YYYY-MM-DD HH:MM:SS)"
         },
         "stage_change_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The last time the deal stage was changed (format: YYYY-MM-DD HH:MM:SS)"
         },
@@ -157,7 +157,7 @@
         },
         "close_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time the deal was closed (won or lost)"
         },
@@ -167,19 +167,19 @@
         },
         "won_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time the deal was marked as won"
         },
         "first_won_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time the deal was first marked as won"
         },
         "lost_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time the deal was marked as lost"
         },
@@ -227,13 +227,13 @@
         },
         "last_incoming_mail_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time of the last incoming email"
         },
         "last_outgoing_mail_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time of the last outgoing email"
         },
@@ -294,7 +294,7 @@
         },
         "rotten_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "nullable": true,
           "description": "The date and time when the deal became rotten (stale)"
         },

@@ -1,7 +1,7 @@
 {
   "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
   "endpoint_id": "27e3d82e-353c-437d-9e3a-95ecfb94f438_v1",
-  "endpoint": "/v2/stages",
+  "endpoint": "/stages",
   "method": "GET",
   "version": 1,
   "endpoint_schema": {
@@ -47,12 +47,12 @@
         },
         "add_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The stage creation time"
         },
         "update_time": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "The stage update time"
         }
       }
@@ -65,30 +65,16 @@
       "operators": ["eq"],
       "required": false,
       "example": 1
-    },
-    "sort_by": {
-      "description": "The field to sort by. Supported fields: id, update_time, add_time, order_nr.",
-      "type": "string",
-      "operators": ["eq"],
-      "required": false,
-      "example": "id"
-    },
-    "sort_direction": {
-      "description": "The sorting direction. Supported values: asc, desc.",
-      "type": "string",
-      "operators": ["eq"],
-      "required": false,
-      "example": "asc"
     }
   },
   "pagination": {
-    "type": "cursor",
+    "type": "offset",
     "params": {
       "limit_param": "limit",
-      "offset_param": null,
+      "offset_param": "start",
       "max_limit": 500,
-      "cursor_param": "cursor",
-      "next_cursor_field": "additional_data.next_cursor",
+      "cursor_param": null,
+      "next_cursor_field": null,
       "page_param": null,
       "uses_link_header": false,
       "time_window_params": {
@@ -97,5 +83,5 @@
       }
     }
   },
-  "replication_filter_mapping": null
+  "replication_filter_mapping": {}
 }
