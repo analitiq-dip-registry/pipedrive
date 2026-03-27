@@ -23,7 +23,7 @@ All connectors are open source and free to use. To get started:
 3. Launch Claude in the root directory of `analitiq-core`
 4. Tell it: *"I need to move data from X to Y"*
 
-The `analitiq-plugin-dataflow` plugin will automatically fetch the required connectors from the [Analitiq Skill Registry](https://github.com/analitiq-skill-registry) and set up the data flow pipeline for you.
+The `analitiq-plugin-dataflow` plugin will automatically fetch the required connectors from the [Analitiq Skill Registry](https://github.com/analitiq-dip-registry) and set up the data flow pipeline for you.
 
 ## Prerequisites
 
@@ -81,7 +81,7 @@ You can create a new connector to any API or database using Claude and the Anali
 1. Install [Claude Code](https://claude.ai/code)
 2. Install the connector builder plugin:
    ```
-   claude plugin add analitiq-skill-registry/analitiq-plugin-connector-builder
+   claude plugin add analitiq-dip-registry/analitiq-plugin-connector-builder
    ```
 3. Launch Claude and say: *"I want to create a connector for [system name]"*
 4. The plugin will interview you about the system, research its API documentation, and generate the full connector with all required files
@@ -90,7 +90,7 @@ No coding required -- the plugin handles authentication research, endpoint schem
 
 ## Contributing
 
-All connectors in this registry are community-maintained and live at [github.com/analitiq-skill-registry](https://github.com/analitiq-skill-registry). To add new endpoints or improve an existing connector, install the [connector builder plugin](https://github.com/analitiq-skill-registry/analitiq-plugin-connector-builder) and follow its instructions.
+All connectors in this registry are community-maintained and live at [github.com/analitiq-dip-registry](https://github.com/analitiq-dip-registry). To add new endpoints or improve an existing connector, install the [connector builder plugin](https://github.com/analitiq-dip-registry/analitiq-plugin-connector-builder) and follow its instructions.
 
 ## Links
 
