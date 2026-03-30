@@ -7,6 +7,8 @@ on:
 jobs:
   init-repo:
     runs-on: ubuntu-latest
+    permissions:
+      administration: write
     # Only run once — when the repo has just 1 commit
     if: github.run_number == 1
     steps:
