@@ -1,0 +1,111 @@
+name: Version Bump on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  bump-version:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine bump type from labels
+        id: bump
+        run: |
+          LABELS='${{ toJSON(github.event.pull_request.labels.*.name) }}'
+          if echo "$LABELS" | grep -q '"version:major"'; then
+            echo "type=major" >> "$GITHUB_OUTPUT"
+          elif echo "$LABELS" | grep -q '"version:minor"'; then
+            echo "type=minor" >> "$GITHUB_OUTPUT"
+          elif echo "$LABELS" | grep -q '"version:patch"'; then
+            echo "type=patch" >> "$GITHUB_OUTPUT"
+          else
+            echo "type=none" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump manifest version
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          BUMP_TYPE="${{ steps.bump.outputs.type }}"
+          MANIFEST="definition/manifest.json"
+
+          CURRENT=$(jq -r '.version' "$MANIFEST")
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+
+          case "$BUMP_TYPE" in
+            major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+            minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+            patch) PATCH=$((PATCH + 1)) ;;
+          esac
+
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          jq --arg v "$NEW_VERSION" '.version = $v' "$MANIFEST" > tmp.json && mv tmp.json "$MANIFEST"
+          echo "NEW_VERSION=$NEW_VERSION" >> "$GITHUB_ENV"
+
+      - name: Update CHANGELOG.md
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          TODAY=$(date +%Y-%m-%d)
+          BUMP_TYPE="${{ steps.bump.outputs.type }}"
+
+          # Determine changelog section based on bump type
+          case "$BUMP_TYPE" in
+            major) SECTION="Changed" ;;
+            minor) SECTION="Added" ;;
+            patch) SECTION="Fixed" ;;
+          esac
+
+          # Build the new entry
+          ENTRY="## [$NEW_VERSION] - $TODAY\n\n### $SECTION\n- $PR_TITLE (#$PR_NUMBER)"
+
+          # Insert after the first line (# Changelog)
+          sed -i "0,/^# Changelog$/{ /^# Changelog$/a\\
+          \\
+          $ENTRY
+          }" CHANGELOG.md
+
+      - name: Commit and push
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add definition/manifest.json CHANGELOG.md
+          git commit -m "chore: bump version to $NEW_VERSION (#${{ github.event.pull_request.number }})"
+          git push
+
+      - name: Notify registry
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          MANIFEST="definition/manifest.json"
+          CONNECTOR="definition/connector.json"
+
+          SLUG=$(jq -r '.slug' "$MANIFEST")
+          NAME=$(jq -r '.connector_name' "$CONNECTOR")
+          TYPE=$(jq -r '.connector_type' "$CONNECTOR")
+          DRIVER=$(jq -r '.driver // empty' "$CONNECTOR")
+          VERSION=$(jq -r '.version' "$MANIFEST")
+          REPO="${{ github.repository }}"
+
+          gh api repos/analitiq-dip-registry/.github/dispatches \
+            --method POST \
+            -f event_type=connector-updated \
+            -f "client_payload[slug]=$SLUG" \
+            -f "client_payload[name]=$NAME" \
+            -f "client_payload[type]=$TYPE" \
+            -f "client_payload[driver]=$DRIVER" \
+            -f "client_payload[repo]=$REPO" \
+            -f "client_payload[version]=$VERSION"
+        env:
+          GH_TOKEN: ${{ secrets.REGISTRY_DISPATCH_TOKEN }}

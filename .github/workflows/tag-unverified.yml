@@ -1,0 +1,32 @@
+name: Initialize new repo
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  init-repo:
+    runs-on: ubuntu-latest
+    # Only run once — when the repo has just 1 commit
+    if: github.run_number == 1
+    steps:
+      - name: Add 'unverified' topic
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data } = await github.rest.repos.getAllTopics({ owner, repo });
+            const topics = data.names || [];
+            if (!topics.includes('unverified')) {
+              topics.push('unverified');
+              await github.rest.repos.replaceAllTopics({ owner, repo, names: topics });
+            }
+            console.log(`Topics set to: ${topics.join(', ')}`);
+
+      - name: Enable discussions
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            await github.rest.repos.update({ owner, repo, has_discussions: true });
+            console.log('Discussions enabled');
