@@ -1,362 +1,416 @@
 {
-  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
-  "endpoint_id": "742179c6-ab2c-4e48-a0e4-5c7c408c7302_v1",
-  "endpoint": "/organizations",
-  "method": "GET",
-  "version": 1,
-  "endpoint_schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Organizations List",
-    "description": "Returns an array of organization objects from Pipedrive. Organizations represent companies or entities in the CRM.",
-    "type": "array",
-    "items": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "The unique identifier of the organization"
+  "$schema": "https://schemas.analitiq.ai/api-endpoint/latest.json",
+  "endpoint_id": "organizations",
+  "display_name": "Organizations List",
+  "description": "Returns an array of organization objects from Pipedrive. Organizations represent companies or entities in the CRM.",
+  "operations": {
+    "read": {
+      "request": {
+        "path": "/organizations",
+        "method": "GET"
+      },
+      "response": {
+        "records": {
+          "ref": "response.body.data"
         },
-        "company_id": {
-          "type": "integer",
-          "description": "The ID of the Pipedrive company account"
-        },
-        "owner_id": {
+        "schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "title": "Organizations List",
+          "description": "Returns an array of organization objects from Pipedrive. Organizations represent companies or entities in the CRM.",
           "type": "object",
-          "description": "The owner (user) of the organization",
           "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The ID of the owner user"
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the owner user"
-            },
-            "email": {
-              "type": "string",
-              "description": "The email of the owner user"
-            },
-            "has_pic": {
-              "type": "integer",
-              "description": "Whether the owner has a profile picture (0 or 1)"
-            },
-            "pic_hash": {
-              "type": "string",
-              "nullable": true,
-              "description": "The hash of the owner's profile picture"
-            },
-            "active_flag": {
-              "type": "boolean",
-              "description": "Whether the owner user is active"
-            },
-            "value": {
-              "type": "integer",
-              "description": "The ID of the owner (same as id)"
+            "data": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "The unique identifier of the organization"
+                  },
+                  "company_id": {
+                    "type": "integer",
+                    "description": "The ID of the Pipedrive company account"
+                  },
+                  "owner_id": {
+                    "type": "object",
+                    "description": "The owner (user) of the organization",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The ID of the owner user"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the owner user"
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "The email of the owner user"
+                      },
+                      "has_pic": {
+                        "type": "integer",
+                        "description": "Whether the owner has a profile picture (0 or 1)"
+                      },
+                      "pic_hash": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "The hash of the owner's profile picture"
+                      },
+                      "active_flag": {
+                        "type": "boolean",
+                        "description": "Whether the owner user is active"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "description": "The ID of the owner (same as id)"
+                      }
+                    }
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the organization"
+                  },
+                  "open_deals_count": {
+                    "type": "integer",
+                    "description": "The number of open deals associated with the organization"
+                  },
+                  "related_open_deals_count": {
+                    "type": "integer",
+                    "description": "The number of open deals related through linked organizations"
+                  },
+                  "closed_deals_count": {
+                    "type": "integer",
+                    "description": "The number of closed deals associated with the organization"
+                  },
+                  "related_closed_deals_count": {
+                    "type": "integer",
+                    "description": "The number of closed deals related through linked organizations"
+                  },
+                  "email_messages_count": {
+                    "type": "integer",
+                    "description": "The number of email messages associated with the organization"
+                  },
+                  "people_count": {
+                    "type": "integer",
+                    "description": "The number of persons (contacts) associated with the organization"
+                  },
+                  "activities_count": {
+                    "type": "integer",
+                    "description": "The number of activities associated with the organization"
+                  },
+                  "done_activities_count": {
+                    "type": "integer",
+                    "description": "The number of completed activities associated with the organization"
+                  },
+                  "undone_activities_count": {
+                    "type": "integer",
+                    "description": "The number of incomplete activities associated with the organization"
+                  },
+                  "files_count": {
+                    "type": "integer",
+                    "description": "The number of files associated with the organization"
+                  },
+                  "notes_count": {
+                    "type": "integer",
+                    "description": "The number of notes associated with the organization"
+                  },
+                  "followers_count": {
+                    "type": "integer",
+                    "description": "The number of followers of the organization"
+                  },
+                  "won_deals_count": {
+                    "type": "integer",
+                    "description": "The number of won deals associated with the organization"
+                  },
+                  "related_won_deals_count": {
+                    "type": "integer",
+                    "description": "The number of won deals related through linked organizations"
+                  },
+                  "lost_deals_count": {
+                    "type": "integer",
+                    "description": "The number of lost deals associated with the organization"
+                  },
+                  "related_lost_deals_count": {
+                    "type": "integer",
+                    "description": "The number of lost deals related through linked organizations"
+                  },
+                  "active_flag": {
+                    "type": "boolean",
+                    "description": "Whether the organization is active (not deleted)"
+                  },
+                  "category_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The ID of the category label assigned to the organization"
+                  },
+                  "picture_id": {
+                    "type": "object",
+                    "nullable": true,
+                    "description": "The picture associated with the organization",
+                    "properties": {
+                      "item_type": {
+                        "type": "string",
+                        "description": "The type of item the picture is associated with"
+                      },
+                      "item_id": {
+                        "type": "integer",
+                        "description": "The ID of the item the picture is associated with"
+                      },
+                      "active_flag": {
+                        "type": "boolean",
+                        "description": "Whether the picture is active"
+                      },
+                      "add_time": {
+                        "type": "string",
+                        "description": "The time the picture was added"
+                      },
+                      "update_time": {
+                        "type": "string",
+                        "description": "The time the picture was last updated"
+                      },
+                      "added_by_user_id": {
+                        "type": "integer",
+                        "description": "The ID of the user who added the picture"
+                      },
+                      "pictures": {
+                        "type": "object",
+                        "description": "URLs to different sizes of the picture"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "description": "The ID of the picture"
+                      }
+                    }
+                  },
+                  "country_code": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The country code of the organization's address"
+                  },
+                  "first_char": {
+                    "type": "string",
+                    "description": "The first character of the organization name"
+                  },
+                  "update_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date and time when the organization was last updated (format: YYYY-MM-DD HH:MM:SS)"
+                  },
+                  "delete_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "nullable": true,
+                    "description": "The date and time when the organization was deleted (format: YYYY-MM-DD HH:MM:SS)"
+                  },
+                  "add_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date and time when the organization was added (format: YYYY-MM-DD HH:MM:SS)"
+                  },
+                  "visible_to": {
+                    "type": "string",
+                    "description": "The visibility setting of the organization (1=owner only, 3=owner's visibility group, 5=owner's visibility group and sub-groups, 7=entire company)"
+                  },
+                  "next_activity_date": {
+                    "type": "string",
+                    "format": "date",
+                    "nullable": true,
+                    "description": "The date of the next activity associated with the organization (format: YYYY-MM-DD)"
+                  },
+                  "next_activity_time": {
+                    "type": "string",
+                    "format": "time",
+                    "nullable": true,
+                    "description": "The time of the next activity associated with the organization (format: HH:MM:SS)"
+                  },
+                  "next_activity_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The ID of the next activity associated with the organization"
+                  },
+                  "last_activity_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The ID of the last activity associated with the organization"
+                  },
+                  "last_activity_date": {
+                    "type": "string",
+                    "format": "date",
+                    "nullable": true,
+                    "description": "The date of the last activity associated with the organization (format: YYYY-MM-DD)"
+                  },
+                  "label": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The ID of the label assigned to the organization"
+                  },
+                  "label_ids": {
+                    "type": "array",
+                    "description": "The list of label IDs assigned to the organization",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "address": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The full address of the organization"
+                  },
+                  "address_subpremise": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The sub-premise (apartment, suite) of the organization address"
+                  },
+                  "address_street_number": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The street number of the organization address"
+                  },
+                  "address_route": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The street name (route) of the organization address"
+                  },
+                  "address_sublocality": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The sub-locality (neighborhood) of the organization address"
+                  },
+                  "address_locality": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The locality (city) of the organization address"
+                  },
+                  "address_admin_area_level_1": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The admin area level 1 (state/province) of the organization address"
+                  },
+                  "address_admin_area_level_2": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The admin area level 2 (county) of the organization address"
+                  },
+                  "address_country": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The country of the organization address"
+                  },
+                  "address_postal_code": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The postal code of the organization address"
+                  },
+                  "address_formatted_address": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The formatted full address of the organization"
+                  },
+                  "owner_name": {
+                    "type": "string",
+                    "description": "The name of the organization owner"
+                  },
+                  "cc_email": {
+                    "type": "string",
+                    "description": "The CC email address assigned by Pipedrive for linking email conversations to this organization"
+                  },
+                  "related_objects": {
+                    "type": "object",
+                    "description": "Related objects referenced by the organization record"
+                  }
+                }
+              }
             }
           }
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the organization"
-        },
-        "open_deals_count": {
+        }
+      },
+      "params": {
+        "user_id": {
+          "in": "query",
           "type": "integer",
-          "description": "The number of open deals associated with the organization"
+          "required": false,
+          "description": "Filter organizations by the owner user ID. If omitted, all organizations are returned.",
+          "operators": [
+            "eq"
+          ]
         },
-        "related_open_deals_count": {
+        "filter_id": {
+          "in": "query",
           "type": "integer",
-          "description": "The number of open deals related through linked organizations"
-        },
-        "closed_deals_count": {
-          "type": "integer",
-          "description": "The number of closed deals associated with the organization"
-        },
-        "related_closed_deals_count": {
-          "type": "integer",
-          "description": "The number of closed deals related through linked organizations"
-        },
-        "email_messages_count": {
-          "type": "integer",
-          "description": "The number of email messages associated with the organization"
-        },
-        "people_count": {
-          "type": "integer",
-          "description": "The number of persons (contacts) associated with the organization"
-        },
-        "activities_count": {
-          "type": "integer",
-          "description": "The number of activities associated with the organization"
-        },
-        "done_activities_count": {
-          "type": "integer",
-          "description": "The number of completed activities associated with the organization"
-        },
-        "undone_activities_count": {
-          "type": "integer",
-          "description": "The number of incomplete activities associated with the organization"
-        },
-        "files_count": {
-          "type": "integer",
-          "description": "The number of files associated with the organization"
-        },
-        "notes_count": {
-          "type": "integer",
-          "description": "The number of notes associated with the organization"
-        },
-        "followers_count": {
-          "type": "integer",
-          "description": "The number of followers of the organization"
-        },
-        "won_deals_count": {
-          "type": "integer",
-          "description": "The number of won deals associated with the organization"
-        },
-        "related_won_deals_count": {
-          "type": "integer",
-          "description": "The number of won deals related through linked organizations"
-        },
-        "lost_deals_count": {
-          "type": "integer",
-          "description": "The number of lost deals associated with the organization"
-        },
-        "related_lost_deals_count": {
-          "type": "integer",
-          "description": "The number of lost deals related through linked organizations"
-        },
-        "active_flag": {
-          "type": "boolean",
-          "description": "Whether the organization is active (not deleted)"
-        },
-        "category_id": {
-          "type": "integer",
-          "nullable": true,
-          "description": "The ID of the category label assigned to the organization"
-        },
-        "picture_id": {
-          "type": "object",
-          "nullable": true,
-          "description": "The picture associated with the organization",
-          "properties": {
-            "item_type": {
-              "type": "string",
-              "description": "The type of item the picture is associated with"
-            },
-            "item_id": {
-              "type": "integer",
-              "description": "The ID of the item the picture is associated with"
-            },
-            "active_flag": {
-              "type": "boolean",
-              "description": "Whether the picture is active"
-            },
-            "add_time": {
-              "type": "string",
-              "description": "The time the picture was added"
-            },
-            "update_time": {
-              "type": "string",
-              "description": "The time the picture was last updated"
-            },
-            "added_by_user_id": {
-              "type": "integer",
-              "description": "The ID of the user who added the picture"
-            },
-            "pictures": {
-              "type": "object",
-              "description": "URLs to different sizes of the picture"
-            },
-            "value": {
-              "type": "integer",
-              "description": "The ID of the picture"
-            }
-          }
-        },
-        "country_code": {
-          "type": "string",
-          "nullable": true,
-          "description": "The country code of the organization's address"
+          "required": false,
+          "description": "Filter organizations using a predefined Pipedrive filter by its ID.",
+          "operators": [
+            "eq"
+          ]
         },
         "first_char": {
+          "in": "query",
           "type": "string",
-          "description": "The first character of the organization name"
+          "required": false,
+          "description": "Filter organizations whose name starts with this character.",
+          "operators": [
+            "eq"
+          ]
         },
-        "update_time": {
+        "sort": {
+          "in": "query",
           "type": "string",
-          "format": "date-time",
-          "description": "The date and time when the organization was last updated (format: YYYY-MM-DD HH:MM:SS)"
+          "required": false,
+          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name.",
+          "operators": [
+            "eq"
+          ]
         },
-        "delete_time": {
-          "type": "string",
-          "format": "date-time",
-          "nullable": true,
-          "description": "The date and time when the organization was deleted (format: YYYY-MM-DD HH:MM:SS)"
-        },
-        "add_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The date and time when the organization was added (format: YYYY-MM-DD HH:MM:SS)"
-        },
-        "visible_to": {
-          "type": "string",
-          "description": "The visibility setting of the organization (1=owner only, 3=owner's visibility group, 5=owner's visibility group and sub-groups, 7=entire company)"
-        },
-        "next_activity_date": {
-          "type": "string",
-          "format": "date",
-          "nullable": true,
-          "description": "The date of the next activity associated with the organization (format: YYYY-MM-DD)"
-        },
-        "next_activity_time": {
-          "type": "string",
-          "format": "time",
-          "nullable": true,
-          "description": "The time of the next activity associated with the organization (format: HH:MM:SS)"
-        },
-        "next_activity_id": {
+        "limit": {
+          "in": "query",
           "type": "integer",
-          "nullable": true,
-          "description": "The ID of the next activity associated with the organization"
+          "required": false,
+          "controlled_by": "pagination",
+          "description": "Page size."
         },
-        "last_activity_id": {
+        "start": {
+          "in": "query",
           "type": "integer",
-          "nullable": true,
-          "description": "The ID of the last activity associated with the organization"
-        },
-        "last_activity_date": {
-          "type": "string",
-          "format": "date",
-          "nullable": true,
-          "description": "The date of the last activity associated with the organization (format: YYYY-MM-DD)"
-        },
-        "label": {
-          "type": "integer",
-          "nullable": true,
-          "description": "The ID of the label assigned to the organization"
-        },
-        "label_ids": {
-          "type": "array",
-          "description": "The list of label IDs assigned to the organization",
-          "items": {
-            "type": "integer"
-          }
-        },
-        "address": {
-          "type": "string",
-          "nullable": true,
-          "description": "The full address of the organization"
-        },
-        "address_subpremise": {
-          "type": "string",
-          "nullable": true,
-          "description": "The sub-premise (apartment, suite) of the organization address"
-        },
-        "address_street_number": {
-          "type": "string",
-          "nullable": true,
-          "description": "The street number of the organization address"
-        },
-        "address_route": {
-          "type": "string",
-          "nullable": true,
-          "description": "The street name (route) of the organization address"
-        },
-        "address_sublocality": {
-          "type": "string",
-          "nullable": true,
-          "description": "The sub-locality (neighborhood) of the organization address"
-        },
-        "address_locality": {
-          "type": "string",
-          "nullable": true,
-          "description": "The locality (city) of the organization address"
-        },
-        "address_admin_area_level_1": {
-          "type": "string",
-          "nullable": true,
-          "description": "The admin area level 1 (state/province) of the organization address"
-        },
-        "address_admin_area_level_2": {
-          "type": "string",
-          "nullable": true,
-          "description": "The admin area level 2 (county) of the organization address"
-        },
-        "address_country": {
-          "type": "string",
-          "nullable": true,
-          "description": "The country of the organization address"
-        },
-        "address_postal_code": {
-          "type": "string",
-          "nullable": true,
-          "description": "The postal code of the organization address"
-        },
-        "address_formatted_address": {
-          "type": "string",
-          "nullable": true,
-          "description": "The formatted full address of the organization"
-        },
-        "owner_name": {
-          "type": "string",
-          "description": "The name of the organization owner"
-        },
-        "cc_email": {
-          "type": "string",
-          "description": "The CC email address assigned by Pipedrive for linking email conversations to this organization"
-        },
-        "related_objects": {
-          "type": "object",
-          "description": "Related objects referenced by the organization record"
+          "required": false,
+          "controlled_by": "pagination",
+          "description": "Offset/start index."
         }
+      },
+      "pagination": {
+        "type": "offset",
+        "offset": {
+          "param": "start",
+          "initial": 0
+        },
+        "limit": {
+          "param": "limit",
+          "max": 500,
+          "default": 500
+        },
+        "stop_when": {
+          "empty": {
+            "ref": "response.body.data"
+          }
+        }
+      },
+      "replication": {
+        "supported_methods": [
+          "full_refresh",
+          "incremental"
+        ],
+        "cursor_mappings": [
+          {
+            "cursor_field": "update_time",
+            "param": "sort",
+            "operator": "gte",
+            "format": "date-time"
+          }
+        ]
       }
     }
-  },
-  "filters": {
-    "user_id": {
-      "description": "Filter organizations by the owner user ID. If omitted, all organizations are returned.",
-      "type": "integer",
-      "operators": ["eq"],
-      "required": false,
-      "example": 1
-    },
-    "filter_id": {
-      "description": "Filter organizations using a predefined Pipedrive filter by its ID.",
-      "type": "integer",
-      "operators": ["eq"],
-      "required": false,
-      "example": 12
-    },
-    "first_char": {
-      "description": "Filter organizations whose name starts with this character.",
-      "type": "string",
-      "operators": ["eq"],
-      "required": false,
-      "example": "A"
-    },
-    "sort": {
-      "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name.",
-      "type": "string",
-      "operators": ["eq"],
-      "required": false,
-      "example": "name ASC"
-    }
-  },
-  "pagination": {
-    "type": "offset",
-    "params": {
-      "limit_param": "limit",
-      "offset_param": "start",
-      "max_limit": 500,
-      "cursor_param": null,
-      "next_cursor_field": null,
-      "page_param": null,
-      "uses_link_header": false,
-      "time_window_params": {
-        "start_param": null,
-        "end_param": null
-      }
-    }
-  },
-  "replication_filter_mapping": {
-    "update_time": "sort"
   }
 }

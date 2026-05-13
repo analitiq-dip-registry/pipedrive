@@ -1,72 +1,92 @@
 {
-  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
-  "endpoint_id": "27e3d82e-353c-437d-9e3a-95ecfb94f438_v1",
-  "endpoint": "/stages",
-  "method": "GET",
-  "version": 1,
-  "endpoint_schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Pipedrive Stages",
-    "description": "Returns an array of pipeline stage objects. Each stage is a logical component of a pipeline that can hold deals.",
-    "type": "array",
-    "items": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "The ID of the stage"
+  "$schema": "https://schemas.analitiq.ai/api-endpoint/latest.json",
+  "endpoint_id": "stages",
+  "display_name": "Pipedrive Stages",
+  "description": "Returns an array of pipeline stage objects. Each stage is a logical component of a pipeline that can hold deals.",
+  "operations": {
+    "read": {
+      "request": {
+        "path": "/stages",
+        "method": "GET"
+      },
+      "response": {
+        "records": {
+          "ref": "response.body.data"
         },
-        "order_nr": {
-          "type": "integer",
-          "description": "Defines the order of the stage within its pipeline"
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the stage"
-        },
-        "is_deleted": {
-          "type": "boolean",
-          "description": "Whether the stage is marked as deleted or not"
-        },
-        "deal_probability": {
-          "type": "integer",
-          "description": "The default success probability percentage assigned to deals in this stage. Used when weighted deal values are enabled on the pipeline."
-        },
+        "schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "title": "Pipedrive Stages",
+          "description": "Returns an array of pipeline stage objects. Each stage is a logical component of a pipeline that can hold deals.",
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "The ID of the stage"
+                  },
+                  "order_nr": {
+                    "type": "integer",
+                    "description": "Defines the order of the stage within its pipeline"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the stage"
+                  },
+                  "is_deleted": {
+                    "type": "boolean",
+                    "description": "Whether the stage is marked as deleted or not"
+                  },
+                  "deal_probability": {
+                    "type": "integer",
+                    "description": "The default success probability percentage assigned to deals in this stage. Used when weighted deal values are enabled on the pipeline."
+                  },
+                  "pipeline_id": {
+                    "type": "integer",
+                    "description": "The ID of the pipeline the stage belongs to"
+                  },
+                  "is_deal_rot_enabled": {
+                    "type": "boolean",
+                    "description": "Whether deals in this stage can become rotten"
+                  },
+                  "days_to_rotten": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The number of days the deals not updated in this stage would become rotten. Applies only if is_deal_rot_enabled is set."
+                  },
+                  "add_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The stage creation time"
+                  },
+                  "update_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The stage update time"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "params": {
         "pipeline_id": {
+          "in": "query",
           "type": "integer",
-          "description": "The ID of the pipeline the stage belongs to"
-        },
-        "is_deal_rot_enabled": {
-          "type": "boolean",
-          "description": "Whether deals in this stage can become rotten"
-        },
-        "days_to_rotten": {
-          "type": "integer",
-          "nullable": true,
-          "description": "The number of days the deals not updated in this stage would become rotten. Applies only if is_deal_rot_enabled is set."
-        },
-        "add_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The stage creation time"
-        },
-        "update_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The stage update time"
+          "required": false,
+          "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched.",
+          "operators": [
+            "eq"
+          ]
         }
       }
     }
-  },
-  "filters": {
-    "pipeline_id": {
-      "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched.",
-      "type": "integer",
-      "operators": ["eq"],
-      "required": false,
-      "example": 1
-    }
-  },
-  "pagination": null,
-  "replication_filter_mapping": {}
+  }
 }
