@@ -7,7 +7,17 @@
     "read": {
       "request": {
         "path": "/deals",
-        "method": "GET"
+        "method": "GET",
+        "query": {
+          "user_id": { "from_param": "user_id" },
+          "filter_id": { "from_param": "filter_id" },
+          "stage_id": { "from_param": "stage_id" },
+          "status": { "from_param": "status" },
+          "sort": { "from_param": "sort" },
+          "owned_by_you": { "from_param": "owned_by_you" },
+          "limit": { "from_param": "limit" },
+          "start": { "from_param": "start" }
+        }
       },
       "response": {
         "records": {
@@ -20,10 +30,7 @@
           "type": "object",
           "properties": {
             "data": {
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
@@ -499,7 +506,8 @@
         "type": "offset",
         "offset": {
           "param": "start",
-          "initial": 0
+          "initial": 0,
+          "increment_by": 500
         },
         "limit": {
           "param": "limit",
@@ -511,20 +519,6 @@
             "ref": "response.body.data"
           }
         }
-      },
-      "replication": {
-        "supported_methods": [
-          "full_refresh",
-          "incremental"
-        ],
-        "cursor_mappings": [
-          {
-            "cursor_field": "update_time",
-            "param": "sort",
-            "operator": "gte",
-            "format": "date-time"
-          }
-        ]
       }
     }
   }

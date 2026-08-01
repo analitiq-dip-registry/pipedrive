@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.analitiq.ai/connector/latest.json",
-  "connector_id": "12e25261-b29b-4471-aecb-48ebaa785f44",
+  "connector_id": "pipedrive",
   "kind": "api",
   "display_name": "Pipedrive",
   "description": "Sales CRM and pipeline management platform for tracking deals, contacts, and sales activities",
