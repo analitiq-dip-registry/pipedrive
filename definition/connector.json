@@ -5,7 +5,7 @@
   "display_name": "Pipedrive",
   "description": "Sales CRM and pipeline management platform for tracking deals, contacts, and sales activities",
   "documentation_url": "https://developers.pipedrive.com/docs/api/v1",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "default_transport": "api",
   "transports": {
     "auth": {
