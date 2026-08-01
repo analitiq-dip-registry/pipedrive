@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.1] - 2026-08-01
+
+### Fixed
+- bug: bump connector.json, not the legacy manifest.json (#11)
+
 ## [2.0.0] - 2026-08-01
 
 ### Changed

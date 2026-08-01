@@ -5,7 +5,7 @@
   "display_name": "Pipedrive",
   "description": "Sales CRM and pipeline management platform for tracking deals, contacts, and sales activities",
   "documentation_url": "https://developers.pipedrive.com/docs/api/v1",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "default_transport": "api",
   "transports": {
     "auth": {
@@ -16,8 +16,12 @@
         "Authorization": {
           "function": "basic_auth",
           "input": {
-            "username": { "ref": "connection.parameters.client_id" },
-            "password": { "ref": "secrets.client_secret" }
+            "username": {
+              "ref": "connection.parameters.client_id"
+            },
+            "password": {
+              "ref": "secrets.client_secret"
+            }
           }
         }
       }
@@ -28,7 +32,9 @@
       "headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": { "template": "Bearer ${auth.access_token}" }
+        "Authorization": {
+          "template": "Bearer ${auth.access_token}"
+        }
       }
     },
     "api": {
@@ -37,7 +43,9 @@
       "headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": { "template": "Bearer ${auth.access_token}" }
+        "Authorization": {
+          "template": "Bearer ${auth.access_token}"
+        }
       },
       "timeout_seconds": 30,
       "rate_limit": {
