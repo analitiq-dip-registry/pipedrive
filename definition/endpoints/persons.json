@@ -7,7 +7,15 @@
     "read": {
       "request": {
         "path": "/persons",
-        "method": "GET"
+        "method": "GET",
+        "query": {
+          "user_id": { "from_param": "user_id" },
+          "filter_id": { "from_param": "filter_id" },
+          "first_char": { "from_param": "first_char" },
+          "sort": { "from_param": "sort" },
+          "limit": { "from_param": "limit" },
+          "start": { "from_param": "start" }
+        }
       },
       "response": {
         "records": {
@@ -20,10 +28,7 @@
           "type": "object",
           "properties": {
             "data": {
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
@@ -414,7 +419,8 @@
         "type": "offset",
         "offset": {
           "param": "start",
-          "initial": 0
+          "initial": 0,
+          "increment_by": 500
         },
         "limit": {
           "param": "limit",
@@ -426,20 +432,6 @@
             "ref": "response.body.data"
           }
         }
-      },
-      "replication": {
-        "supported_methods": [
-          "full_refresh",
-          "incremental"
-        ],
-        "cursor_mappings": [
-          {
-            "cursor_field": "update_time",
-            "param": "sort",
-            "operator": "gte",
-            "format": "date-time"
-          }
-        ]
       }
     }
   }
