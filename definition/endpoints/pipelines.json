@@ -6,7 +6,7 @@
   "operations": {
     "read": {
       "request": {
-        "path": "/pipelines",
+        "path": "/api/v1/pipelines",
         "method": "GET"
       },
       "response": {

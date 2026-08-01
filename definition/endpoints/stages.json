@@ -6,7 +6,7 @@
   "operations": {
     "read": {
       "request": {
-        "path": "/stages",
+        "path": "/api/v1/stages",
         "method": "GET"
       },
       "response": {
