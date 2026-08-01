@@ -6,7 +6,7 @@
   "operations": {
     "read": {
       "request": {
-        "path": "/deals",
+        "path": "/api/v2/deals",
         "method": "GET"
       },
       "response": {
@@ -426,7 +426,7 @@
         }
       },
       "params": {
-        "user_id": {
+        "owner_id": {
           "in": "query",
           "type": "integer",
           "required": false,
@@ -439,7 +439,7 @@
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter deals using a predefined Pipedrive filter ID",
+          "description": "Filter deals using a predefined Pipedrive filter ID.",
           "operators": [
             "eq"
           ]
@@ -457,25 +457,35 @@
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Filter deals by status. One of: open, won, lost, deleted, all_not_deleted. Default is all_not_deleted.",
+          "description": "Filter deals by status. One of: open, won, lost, deleted. If omitted, all non-deleted deals are returned.",
           "operators": [
             "eq"
           ]
         },
-        "sort": {
+        "updated_since": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, title, value, add_time, update_time, stage_id, status.",
+          "description": "Only deals with an update_time later than or equal to this time are returned. RFC3339 format, e.g. 2025-01-01T10:20:00Z.",
+          "controlled_by": "replication",
+          "operators": [
+            "gte"
+          ]
+        },
+        "sort_by": {
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Field to sort results by. One of: id, update_time, add_time. Default is id.",
           "operators": [
             "eq"
           ]
         },
-        "owned_by_you": {
+        "sort_direction": {
           "in": "query",
-          "type": "integer",
+          "type": "string",
           "required": false,
-          "description": "When set to 1, only deals owned by the authenticated user are returned. 0 returns all deals.",
+          "description": "Sort direction: asc or desc. Default is asc.",
           "operators": [
             "eq"
           ]
@@ -485,31 +495,42 @@
           "type": "integer",
           "required": false,
           "controlled_by": "pagination",
-          "description": "Page size."
+          "description": "Page size (max 500, default 100)."
         },
-        "start": {
+        "cursor": {
           "in": "query",
-          "type": "integer",
+          "type": "string",
           "required": false,
           "controlled_by": "pagination",
-          "description": "Offset/start index."
+          "description": "Opaque cursor token for the next page of results."
         }
       },
       "pagination": {
-        "type": "offset",
-        "offset": {
-          "param": "start",
-          "initial": 0
+        "type": "cursor",
+        "cursor": {
+          "param": "cursor",
+          "next_cursor": {
+            "ref": "response.body.additional_data.next_cursor"
+          }
+        },
+        "stop_when": {
+          "or": [
+            {
+              "empty": {
+                "ref": "response.body.data"
+              }
+            },
+            {
+              "missing": {
+                "ref": "response.body.additional_data.next_cursor"
+              }
+            }
+          ]
         },
         "limit": {
           "param": "limit",
           "max": 500,
-          "default": 500
-        },
-        "stop_when": {
-          "empty": {
-            "ref": "response.body.data"
-          }
+          "default": 100
         }
       },
       "replication": {
@@ -520,7 +541,7 @@
         "cursor_mappings": [
           {
             "cursor_field": "update_time",
-            "param": "sort",
+            "param": "updated_since",
             "operator": "gte",
             "format": "date-time"
           }

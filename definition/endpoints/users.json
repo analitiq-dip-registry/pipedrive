@@ -6,7 +6,7 @@
   "operations": {
     "read": {
       "request": {
-        "path": "/users",
+        "path": "/api/v1/users",
         "method": "GET"
       },
       "response": {

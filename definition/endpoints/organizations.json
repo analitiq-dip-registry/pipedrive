@@ -6,7 +6,7 @@
   "operations": {
     "read": {
       "request": {
-        "path": "/organizations",
+        "path": "/api/v2/organizations",
         "method": "GET"
       },
       "response": {
@@ -329,7 +329,7 @@
         }
       },
       "params": {
-        "user_id": {
+        "owner_id": {
           "in": "query",
           "type": "integer",
           "required": false,
@@ -347,20 +347,30 @@
             "eq"
           ]
         },
-        "first_char": {
+        "updated_since": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Filter organizations whose name starts with this character.",
+          "description": "Only organizations with an update_time later than or equal to this time are returned. RFC3339 format, e.g. 2025-01-01T10:20:00Z.",
+          "controlled_by": "replication",
+          "operators": [
+            "gte"
+          ]
+        },
+        "sort_by": {
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Field to sort results by. One of: id, update_time, add_time. Default is id.",
           "operators": [
             "eq"
           ]
         },
-        "sort": {
+        "sort_direction": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name.",
+          "description": "Sort direction: asc or desc. Default is asc.",
           "operators": [
             "eq"
           ]
@@ -370,31 +380,42 @@
           "type": "integer",
           "required": false,
           "controlled_by": "pagination",
-          "description": "Page size."
+          "description": "Page size (max 500, default 100)."
         },
-        "start": {
+        "cursor": {
           "in": "query",
-          "type": "integer",
+          "type": "string",
           "required": false,
           "controlled_by": "pagination",
-          "description": "Offset/start index."
+          "description": "Opaque cursor token for the next page of results."
         }
       },
       "pagination": {
-        "type": "offset",
-        "offset": {
-          "param": "start",
-          "initial": 0
+        "type": "cursor",
+        "cursor": {
+          "param": "cursor",
+          "next_cursor": {
+            "ref": "response.body.additional_data.next_cursor"
+          }
+        },
+        "stop_when": {
+          "or": [
+            {
+              "empty": {
+                "ref": "response.body.data"
+              }
+            },
+            {
+              "missing": {
+                "ref": "response.body.additional_data.next_cursor"
+              }
+            }
+          ]
         },
         "limit": {
           "param": "limit",
           "max": 500,
-          "default": 500
-        },
-        "stop_when": {
-          "empty": {
-            "ref": "response.body.data"
-          }
+          "default": 100
         }
       },
       "replication": {
@@ -405,7 +426,7 @@
         "cursor_mappings": [
           {
             "cursor_field": "update_time",
-            "param": "sort",
+            "param": "updated_since",
             "operator": "gte",
             "format": "date-time"
           }

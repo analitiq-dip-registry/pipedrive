@@ -33,7 +33,7 @@
     },
     "api": {
       "transport_type": "http",
-      "base_url": "https://${connection.discovered.api_domain}.pipedrive.com/api/v1",
+      "base_url": "https://${connection.discovered.api_domain}.pipedrive.com",
       "headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
