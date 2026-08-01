@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.0] - 2026-08-01
+
+### Changed
+- feat!: rc17 conformance — add read type map, fix connector_id (#8)
+
 ## [1.1.1] - 2026-05-15
 
 ### Fixed
