@@ -467,10 +467,7 @@
           "type": "string",
           "required": false,
           "description": "Only deals with an update_time later than or equal to this time are returned. RFC3339 format, e.g. 2025-01-01T10:20:00Z.",
-          "controlled_by": "replication",
-          "operators": [
-            "gte"
-          ]
+          "controlled_by": "replication"
         },
         "sort_by": {
           "in": "query",
