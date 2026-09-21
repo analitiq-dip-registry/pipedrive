@@ -83,7 +83,7 @@ connector-{name}/
 ├── CONTRIBUTING.md         # This file
 └── definition/             # Connector definition files
     ├── connector.json      # Authentication and connector config, incl. version (auto-bumped on merge)
-    ├── type-map-read.json  # Native type -> canonical type mapping for reads
+    ├── type-map.json       # Native type -> canonical type mapping (read section)
     └── endpoints/          # Individual endpoint JSON definitions
         └── {name}.json
 ```
