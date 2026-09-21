@@ -437,55 +437,37 @@
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter deals by the owner user ID. If omitted, all deals for the account are returned.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter deals by the owner user ID. If omitted, all deals for the account are returned."
         },
         "filter_id": {
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter deals using a predefined Pipedrive filter ID",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter deals using a predefined Pipedrive filter ID"
         },
         "stage_id": {
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter deals by pipeline stage ID. If omitted, all stages are returned.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter deals by pipeline stage ID. If omitted, all stages are returned."
         },
         "status": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Filter deals by status. One of: open, won, lost, deleted, all_not_deleted. Default is all_not_deleted.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter deals by status. One of: open, won, lost, deleted, all_not_deleted. Default is all_not_deleted."
         },
         "sort": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, title, value, add_time, update_time, stage_id, status.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, title, value, add_time, update_time, stage_id, status."
         },
         "owned_by_you": {
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "When set to 1, only deals owned by the authenticated user are returned. 0 returns all deals.",
-          "operators": [
-            "eq"
-          ]
+          "description": "When set to 1, only deals owned by the authenticated user are returned. 0 returns all deals."
         },
         "limit": {
           "in": "query",
@@ -501,6 +483,11 @@
           "controlled_by": "pagination",
           "description": "Offset/start index."
         }
+      },
+      "filters": {
+        "user_id.id": { "eq": { "from_param": "user_id" } },
+        "stage_id": { "eq": { "from_param": "stage_id" } },
+        "status": { "eq": { "from_param": "status" } }
       },
       "pagination": {
         "type": "offset",
