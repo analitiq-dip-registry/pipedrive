@@ -81,11 +81,11 @@
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched.",
-          "operators": [
-            "eq"
-          ]
+          "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched."
         }
+      },
+      "filters": {
+        "pipeline_id": { "eq": { "from_param": "pipeline_id" } }
       }
     }
   }

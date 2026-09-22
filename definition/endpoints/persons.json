@@ -368,37 +368,25 @@
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter persons by the owner user ID. When supplied, only persons owned by the given user are returned.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter persons by the owner user ID. When supplied, only persons owned by the given user are returned."
         },
         "filter_id": {
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter persons using a predefined Pipedrive filter by its ID.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter persons using a predefined Pipedrive filter by its ID."
         },
         "first_char": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Filter persons whose name starts with the specified letter or character.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter persons whose name starts with the specified letter or character."
         },
         "sort": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, open_deals_count, email.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, open_deals_count, email."
         },
         "limit": {
           "in": "query",
@@ -414,6 +402,9 @@
           "controlled_by": "pagination",
           "description": "Offset/start index."
         }
+      },
+      "filters": {
+        "owner_id.id": { "eq": { "from_param": "user_id" } }
       },
       "pagination": {
         "type": "offset",

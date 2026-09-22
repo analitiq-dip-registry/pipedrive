@@ -338,37 +338,25 @@
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter organizations by the owner user ID. If omitted, all organizations are returned.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter organizations by the owner user ID. If omitted, all organizations are returned."
         },
         "filter_id": {
           "in": "query",
           "type": "integer",
           "required": false,
-          "description": "Filter organizations using a predefined Pipedrive filter by its ID.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter organizations using a predefined Pipedrive filter by its ID."
         },
         "first_char": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Filter organizations whose name starts with this character.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Filter organizations whose name starts with this character."
         },
         "sort": {
           "in": "query",
           "type": "string",
           "required": false,
-          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name.",
-          "operators": [
-            "eq"
-          ]
+          "description": "Field name and sort direction to order results (e.g., 'update_time DESC'). Supported fields: id, name, add_time, update_time, address, owner_name."
         },
         "limit": {
           "in": "query",
@@ -384,6 +372,10 @@
           "controlled_by": "pagination",
           "description": "Offset/start index."
         }
+      },
+      "filters": {
+        "owner_id.id": { "eq": { "from_param": "user_id" } },
+        "first_char": { "eq": { "from_param": "first_char" } }
       },
       "pagination": {
         "type": "offset",

@@ -31,7 +31,6 @@
       "base_url": "https://api.pipedrive.com",
       "headers": {
         "Accept": "application/json",
-        "Content-Type": "application/json",
         "Authorization": {
           "template": "Bearer ${auth.access_token}"
         }
@@ -42,7 +41,6 @@
       "base_url": "https://${connection.discovered.api_domain}.pipedrive.com/api/v1",
       "headers": {
         "Accept": "application/json",
-        "Content-Type": "application/json",
         "Authorization": {
           "template": "Bearer ${auth.access_token}"
         }
@@ -65,9 +63,7 @@
       "transport_ref": "auth",
       "method": "POST",
       "path": "/oauth/token",
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      "content_type": "application/x-www-form-urlencoded",
       "body": {
         "template": "grant_type=authorization_code&code=${runtime.oauth.code}&redirect_uri=${runtime.oauth.redirect_uri}"
       }
@@ -76,9 +72,7 @@
       "transport_ref": "auth",
       "method": "POST",
       "path": "/oauth/token",
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      "content_type": "application/x-www-form-urlencoded",
       "body": {
         "template": "grant_type=refresh_token&refresh_token=${auth.refresh_token}"
       }
